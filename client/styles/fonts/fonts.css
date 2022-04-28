@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'Corbel';
+    src: url('./Corbel.ttf');
+    font-weight: 900;
+    font-style: normal;
+    font-size: 50px;
+}
+
+@font-face {
+    font-family: 'Play';
+    src: url('./Play-Regular.ttf');
+    font-weight: 900;
+    font-style: normal;
+    font-size: 50px;
+}
+
+@font-face {
+    font-family: 'DecoType';
+    src: url('./DecoType.ttf');
+    font-weight: 900;
+    font-style: normal;
+    font-size: 50px;
+}
