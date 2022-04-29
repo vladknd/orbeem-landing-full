@@ -1,0 +1,48 @@
+version: '3.8'
+
+services: 
+  db:
+    container_name: database
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: "orbeem"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports: 
+      - "5432:5432"
+
+  server: 
+    container_name: api
+    image: server
+    depends_on: 
+      - db
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    ports: 
+      - "4001:4000"
+
+  client: 
+    container_name: client
+    image: client
+    depends_on: 
+      - server
+    build: 
+      context: ./client
+      dockerfile: Dockerfile
+    ports: 
+      - "3000:3000"
+  
+  nginx:
+    depends_on:
+      - server
+      - client
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - "3050:80"
+    
