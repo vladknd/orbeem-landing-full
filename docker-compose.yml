@@ -13,7 +13,7 @@ services:
     ports: 
       - "5432:5432"
 
-  server: 
+  api: 
     container_name: api
     image: server
     depends_on: 
@@ -22,7 +22,7 @@ services:
       context: ./server
       dockerfile: Dockerfile
     ports: 
-      - "4001:4000"
+      - "4000:4000"
 
   client: 
     container_name: client
