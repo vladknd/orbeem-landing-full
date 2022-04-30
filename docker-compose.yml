@@ -28,7 +28,7 @@ services:
     container_name: client
     image: client
     depends_on: 
-      - server
+      - api
     build: 
       context: ./client
       dockerfile: Dockerfile
@@ -37,7 +37,7 @@ services:
   
   nginx:
     depends_on:
-      - server
+      - api
       - client
     restart: always
     build:
